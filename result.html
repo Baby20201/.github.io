@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta Tên="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kết quả</title>
+  <style>
+    .Lời_chúc{
+       text-align:center;
+       display:flex;
+       margin: 200px auto;
+       border-style: outset;
+       border-radius: 20px;
+       border-left-color: blueviolet;
+       border-top-color: darkorchid;
+       border-bottom-color: darkorchid;
+       border-right-color: darkmagenta;
+       background-color: pink;
+    }
+    #greeting{
+      padding-left: 150px;
+      white-space: pre-wrap;
+      padding-right: 50px;
+       font-size: 30px;
+       font-style: italic;
+    }
+body{
+  background-image: url(https://i.redd.it/j9nghz9syptf1.gif);
+}
+#Ảnh{
+border-radius: 20px;
+
+}
+  </style>
+  </head>
+<body>
+  <div class="Lời_chúc">
+  <img id="Ảnh" alt="Đang có 1 hình ảnh rất đẹp của ai đó đang load..." width="300px">
+  <br>
+  <h2 id="greeting"></h2>
+  <br>
+  </div>
+  <a href="123.html">⬅ Quay lại</a>
+
+  <script>
+    // Lấy dữ liệu từ localStorage
+    const Họ_và_tên = localStorage.getItem("fullname");
+    const Ảnh = localStorage.getItem("imagedata");
+    const greeting = document.getElementById("greeting");
+    const img = document.getElementById("Ảnh");
+
+    // Gán ảnh
+    if (Ảnh) {
+      img.src = Ảnh;
+    }
+
+    // Tùy chọn câu chào theo tên
+    let message = "";
+    if (!Họ_và_tên) {
+      message = "Không có thông tin nào được nhập!";
+    } else if (Họ_và_tên === "Nguyễn Thành Đạt") {
+      message = `Nếu bạn trùng tên với mình thì: Chúc tốt lành! 
+
+
+Nếu là người tạo ra cái này thì hãy đọc phần bên dưới↓↓
+
+
+      
+
+
+
+
+
+
+Nếu bản thân cảm thấy vất vả thì hãy luôn nhớ có mình ở quá khứ ở bên,mình của tương lai ạ!! `;
+    } else if (Họ_và_tên=== "Nguyễn Thị Trang Nhung") {
+      message = `Bạn ơi, rep tin nhắn đi
+      Nhắn đi
+      Mình có phải công chúa đâu ạ!`;
+    } else {
+      message = `Xin chào, ${Họ_và_tên}! Rất vui được gặp bạn 🐧`;
+    }
+
+    // Hiệu ứng gõ dần từng ký tự
+    let i = 0;
+    function typeEffect() {
+      if (i < message.length) {
+        greeting.textContent += message.charAt(i);
+        i++;
+        setTimeout(typeEffect, 100);
+      } else {
+        greeting.style.borderRight = 'none';
+      }
+    }
+    typeEffect();
+  </script>
+</body>
+</html>
